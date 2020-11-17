@@ -37,3 +37,7 @@ Select Date Range for the data they was nt tolook at.
 Select Location: Country, City or State.
 
 Interact with the graphs that are presented.
+
+The deployed app can be accessed at:
+
+https://anandlal1080.github.io/covid19-dashboard/
