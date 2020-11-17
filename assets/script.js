@@ -1,3 +1,6 @@
+// CSS Framework Application
+$(document).foundation();
+
 const countryApi = {
     base: "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/"
 
