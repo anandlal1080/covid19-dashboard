@@ -1,139 +1,110 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>COVID-19 Dashboard</title>
     <!-- Foundation CSS Framework -->
-    <link rel="stylesheet" href="assets/css/foundation.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/foundation.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
   </head>
   <body>
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
-      <h1 style="text-align: center;">Welcome to the COVID-19 Dashboard</h1>
-    </div>
-  </div>
-
-
-  <div class="grid-x grid-padding-x">
-    <div class="large-12 cell">
-      <div class="callout">
-        <h3>Please click on the tabs to switch between the United States and World data.</h3>
-        <p>The U.S. tab will allow you to search by state and will return information on tests, cases, hospitalizations, and deaths for that state.</p>
-        <p>The World tab will allow you to search by international locations and will return cases only for that location.</p>
-      </div>
-    </div>
-    </div>
-    <!-- Display Tabs for High Level Location Selection -->
-    <div class="row">
-      <div class="columns">
-        <ul class="tabs" data-tabs id="location-tabs">
-          <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">United States</a></li>
-          <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Internaltional</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Location Specific Panel Displays -->
-    <div class="tabs-content" data-tabs-content="location-tabs">
-      <div class="tabs-panel is-active" id="panel1">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-      </div>
-      <div class="tabs-panel" id="panel2">
-        <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <table width="90%" style="margin-left: auto; margin-right: auto; padding-top: 150px;">
-      <tbody>
-        <tr style="height: 50px;">
-          <td style="border: 1px solid slategrey; width: 26%; background-color: aliceblue;">Enter Location</td>
-          <td style="width: 11%;"></td>
-          <td style="border: 1px solid slategrey; width: 26%; background-color: aliceblue;">Toggle Buttons</td>
-          <td style="width: 11%;"></td>
-          <td style="border: 1px solid slategrey; width: 26%; background-color: aliceblue;">Calendar</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <div class="grid-x grid-margin-x">
-      <div class="cell small-4 card" style="width: 300px;">
-        <div class="card-divider">
-          <h4>TITLE</h4>
+          <h1 style="text-align: center">Welcome to the COVID-19 Dashboard</h1>
         </div>
-        <div class="card-section graph1">
-          <p>GRAPH</p>
+        <div id="day-toggle">
+          <button class="button success" value="60">60 Day</button>
+          <button class="button success" value="90">90 Day</button>
+          <button class="button success" value="total">Reset</button>
+        </div>
+      </div>
+
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <div class="callout">
+            <h3>
+              Please click on the tabs to switch between the United States and
+              World data.
+            </h3>
+            <p>
+              The U.S. tab will allow you to search by state and will return
+              information on tests, cases, hospitalizations, and deaths for that
+              state.
+            </p>
+            <p>
+              The World tab will allow you to search by international locations
+              and will return cases only for that location.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Display Tabs for High Level Location Selection -->
+      <div class="row">
+        <div class="columns">
+          <ul class="tabs" data-tabs id="location-tabs">
+            <li class="tabs-title is-active">
+              <a href="#panel1" aria-selected="true">United States</a>
+            </li>
+            <li class="tabs-title">
+              <a data-tabs-target="panel2" href="#panel2">Internaltional</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Location Specific Panel Displays -->
+      <div class="tabs-content" data-tabs-content="location-tabs">
+        <div class="tabs-panel is-active" id="panel1">
+          <p>
+            Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque
+            eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
+            Phasellus molestie magna non est bibendum non venenatis nisl tempor.
+            Suspendisse dictum feugiat nisl ut dapibus.
+          </p>
+        </div>
+        <div class="tabs-panel" id="panel2">
+          <p>
+            Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu
+            sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie
+            magna non est bibendum non venenatis nisl tempor. Sed auctor neque
+            eu tellus rhoncus ut eleifend nibh porttitor.
+          </p>
         </div>
       </div>
     </div>
-      <div class="cell small-4 card" style="width: 300px;">
-        <div class="card-divider">
-          <h4>TITLE</h4>
-        </div>
-        <div class="card-section graph2">
-          <p>GRAPH</p>
-        </div>
-      </div>
+
+    <!-- CHARTS GO HERE -->
+    <div class="graph1">
+      <canvas id="deaths-chart" width="50" height="50"></canvas>
     </div>
-      <div class="cell small-4 card" style="width: 300px;">
-        <div class="card-divider">
-          <h4>TITLE</h4>
-        </div>
-        <div class="card-section graph3">
-          <p>GRAPH</p>
-        </div>
-      </div>
+    <div class="graph2">
+      <canvas id="cases-chart" width="50" height="50"></canvas>
     </div>
-      <div class="cell small-4 card" style="width: 300px;">
-        <div class="card-divider">
-          <h4>TITLE</h4>
-        </div>
-        <div class="card-section graph4">
-          <p>GRAPH</p>
-        </div>
-      </div>
-    </div> -->
-    <footer style="bottom: 0; margin: auto; position: fixed;">
-      <p >&copy; 2020 ANANTGDO</p>
+    <div class="graph3">
+      <canvas id="tests-chart" width="50" height="50"></canvas>
+    </div>
+    <div class="graph4">
+      <canvas id="hospitalization-chart" width="50" height="50"></canvas>
+    </div>
+
+    <!-- CHARTS END HERE -->
+
+    <footer style="bottom: 0; margin: auto; position: fixed">
+      <p>&copy; 2020 ANANTGDO</p>
     </footer>
 
-
-      <!-- <div class="graph1">
-        <canvas id="myChart1" width="50" height="50"></canvas>
-      </div>
-      <div class="graph2">
-        <canvas id="myChart2" width="50" height="50"></canvas>
-      </div>
-      <div class="graph3">
-        <canvas id="myChart3" width="50" height="50"></canvas>
-      </div><
-      <div class="graph4">
-        <canvas id="myChart4" width="50" height="50"></canvas>
-      </div> -->
-    
- 
     <!--JavaScript For Foundation CSS -->
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
     <script src="assets/js/app.js"></script>
     <!-- JavaScript -->
-      <script src="assets/script.js"></script>   
+    <script src="assets/script.js"></script>
+  </body>
 </html>
