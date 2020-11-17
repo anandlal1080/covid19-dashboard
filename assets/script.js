@@ -13,7 +13,7 @@ let startDate = "2020-11-01";
 let endDate = "2020-11-06";
 let state = "CO";
 getCountryResults(startDate,endDate);
-displayStateResults(state);
+getStatesResults(state);
 function getCountryResults(startDate, endDate) {
     fetch(`${countryApi.base}${startDate}/${endDate}`)
     .then(countryData => {
