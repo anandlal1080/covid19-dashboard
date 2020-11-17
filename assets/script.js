@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-// CSS Framework Application
-$(document).foundation();
-
-=======
 
 var ctx = document.getElementById('myChart1');
   var myChart1 = new Chart(ctx, {
@@ -155,7 +150,6 @@ var myChart4 = new Chart(ctx4, {
   
   
 =======
->>>>>>> aee30ca5c41f160096e99bf4495fe5e69ed8e050
 const countryApi = {
     base: "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/"
 
