@@ -6,6 +6,38 @@ const stateApi = {
   base: "https://api.covidtracking.com/v1/states/",
 };
 
+// Global variable to store all data related to our charts
+const charts = {
+  deaths: {
+    labels: [],
+    values: [],
+    chart: {},
+  },
+  cases: {
+    labels: [],
+    values: [],
+    chart: {},
+  },
+  tests: {
+    labels: [],
+    values: [],
+    chart: {},
+  },
+  hospitalization: {
+    labels: [],
+    values: [],
+    chart: {},
+  },
+};
+
+// Build and assign a reference to each chart
+charts.deaths.chart = buildChart(document.getElementById("deaths-chart"));
+charts.cases.chart = buildChart(document.getElementById("cases-chart"));
+charts.tests.chart = buildChart(document.getElementById("tests-chart"));
+charts.hospitalization.chart = buildChart(
+  document.getElementById("hospitalization-chart")
+);
+
 let startDate = "2020-11-01";
 let endDate = "2020-11-06";
 let state = "CO";
@@ -19,40 +51,73 @@ getStatesResults(state);
 //     }).then(displayResults)
 // }
 
+// Request Covid data based off of our state
 function getStatesResults(state) {
   fetch(`${stateApi.base}${state}/daily.json`)
     .then((stateData) => stateData.json())
-    .then((data) => displayStateResults(data.reverse()));
+    .then((data) => {
+      // sanitize our results
+      // TODO: refactor function name and change how the results are returned
+      const results = displayStateResults(data.reverse());
+
+      const chart = charts.deaths.chart;
+      charts.deaths.labels = results.fullDate;
+      charts.deaths.values = results.fullDeath;
+
+      chart.data.labels = charts.deaths.labels;
+      chart.data.datasets[0].data = charts.deaths.values;
+      chart.update();
+    });
 }
 
-// function displayResults(countryData) {
 
-//     // console.log(countryData);
-// }
+// Assign Event listener to the day toggler buttons
+$("#day-toggle").on("click", "button", function (e) {
+  const amountOfDays = $(this).val();
+  console.log(amountOfDays);
+  const values = charts.deaths.values;
+  const labels = charts.deaths.labels;
+  const chart = charts.deaths.chart;
+  if (amountOfDays === "total") {
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = values;
+    chart.update();
+  } else {
+    const daysToDisplay = values.length - amountOfDays;
+    chart.data.labels = labels.slice(daysToDisplay);
+    chart.data.datasets[0].data = values.slice(daysToDisplay);
+    chart.update();
+  }
+});
 
 function displayStateResults(stateData) {
-  console.log(stateData);
   let fullDate = [];
   let fullDeath = [];
-  let index = 0;
-  
-  for (let i = 200; i < stateData.length; i++) {
+
+  for (let i = 0; i < stateData.length; i++) {
     var date = stateData[i].date;
     var death = stateData[i].death;
-    fullDate[index] = date;
-    fullDeath[index] = death;
-    index++;
+    fullDate[i] = date;
+    fullDeath[i] = death;
   }
 
-  var ctx = document.getElementById("myChart1");
-  var myChart1 = new Chart(ctx, {
+  return {
+    fullDate: fullDate,
+    fullDeath: fullDeath,
+  };
+}
+
+
+// Build and return a reference to a ChartJS object
+function buildChart(chartElement) {
+  return new Chart(chartElement, {
     type: "line",
     data: {
-      labels: fullDate,
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
       datasets: [
         {
-          label: "# of Deaths",
-          data: fullDeath,
+          label: "# of Cases",
+          data: [12, 19, 3, 5, 2, 3],
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -86,126 +151,3 @@ function displayStateResults(stateData) {
     },
   });
 }
-var ctx2 = document.getElementById("myChart2");
-var myChart2 = new Chart(ctx2, {
-  type: "line",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Tests",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-  },
-});
-var ctx3 = document.getElementById("myChart3");
-var myChart3 = new Chart(ctx3, {
-  type: "line",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Hospitalizations",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-  },
-});
-var ctx4 = document.getElementById("myChart4");
-var myChart4 = new Chart(ctx4, {
-  type: "line",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Cases",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-  },
-});
