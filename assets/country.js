@@ -40,7 +40,7 @@ const countryApi = {
     document.getElementById("ww-hospitalization-chart")
   );
   
-  let cStartDate = "2020-11-01";
+  let cStartDate = "2020-08-01";
   let cEndDate = "2020-11-06";
   let country = "canada";
  
