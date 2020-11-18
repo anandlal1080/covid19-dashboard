@@ -27,15 +27,8 @@
               Please click on the tabs to switch between the United States and
               World data.
             </h3>
-            <p>
-              The U.S. tab will allow you to search by state and will return
-              information on tests, cases, hospitalizations, and deaths for that
-              state.
-            </p>
-            <p>
-              The World tab will allow you to search by international locations
-              and will return cases only for that location.
-            </p>
+            <p>Below you will find graphical repesentations of the number of COVID-19 reported tests, cases, hospitalizations, and deaths. By default you will see those statistics for the United States or Worldwide from March 05, 2020 to present day depending on which tab you select. You can refine the data by entering a specific state (United States tab) or country (Worldwide tab). You can further refine the data by either toggling one of the date range buttons or selecting a specific date range with the calendar.</p>
+            <p>The data available only covers March 2020 through present day.</p>
           </div>
         </div>
       </div>
@@ -72,13 +65,15 @@
             </div>
             <!-- Preset Date Range Toggles -->
             <div class="cell small-4 datacell" id="day-toggle">
-              <button class="button success" value="60">60 Day</button>
-              <button class="button success" value="90">90 Day</button>
-              <button class="button success" value="total">Reset</button>
+              <label>Select Quick Range</label>
+              <button class="button btn-click" value="60">60 Day</button>
+              <button class="button btn-click" value="90">90 Day</button>
+              <button class="button btn-click" value="total">Reset</button>
             </div>
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
-              <p>Date: <input type="date" id="calendar-container"></p>
+              <label>Select Date Range</label>
+              <p><input type="date" id="calendar-container"></p>
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -103,18 +98,61 @@
             </div>
           </div>
         </div>
+        <!-- Display Tap for Worldwid Data -->
         <div class="tabs-panel" id="panel2">
-          <p>
-            Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu
-            sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie
-            magna non est bibendum non venenatis nisl tempor. Sed auctor neque
-            eu tellus rhoncus ut eleifend nibh porttitor.
-          </p>
+          <!-- Input data Section of US Tab -->
+          <div class="grid-x grid-margin-x datarow">
+            <!-- Enter State Field -->
+            <div class="cell small-4 datacell">
+              <form>
+                <div class="grid-x grid-padding-x">
+                  <div class="small-12 cell">
+                    <label>Enter Country</label>
+                    <input type="text" placeholder="Enter Country" />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- Preset Date Range Toggles -->
+            <div class="cell small-4 datacell" id="day-toggle">
+              <label>Select Quick Range</label>
+              <button class="button btn-click" value="60">60 Day</button>
+              <button class="button btn-click" value="90">90 Day</button>
+              <button class="button btn-click" value="total">Reset</button>
+            </div>
+            <!-- Calendar Date Range Selector -->
+            <div class="cell small-4 datacell">
+              <label>Select Date Range</label>
+              <p><input type="date" id="calendar-container"></p>
+            </div>
+          </div>
+          <!-- Statistical Graphs -->
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Deaths</h6>
+              <canvas id="ww-deaths-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Cases</h6>
+              <canvas id="ww-cases-chart"></canvas>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Tests</h6>
+              <canvas id="ww-tests-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Hospitalizations</h6>
+              <canvas id="ww-hospitalization-chart"></canvas>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
 
-    <footer style="bottom: 0; margin: auto; position: fixed">
+    <footer>
       <p>&copy; 2020 ANANTGDO</p>
     </footer>
 
