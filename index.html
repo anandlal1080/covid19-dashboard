@@ -49,10 +49,10 @@
         <div class="columns">
           <ul class="tabs" data-tabs id="location-tabs">
             <li class="tabs-title is-active">
-              <a href="#panel1" aria-selected="true">United States</a>
+              <a href="#panel1" aria-selected="true">United States Data</a>
             </li>
             <li class="tabs-title">
-              <a data-tabs-target="panel2" href="#panel2">Internaltional</a>
+              <a data-tabs-target="panel2" href="#panel2">Worldwide Data</a>
             </li>
           </ul>
         </div>
@@ -61,12 +61,25 @@
       <!-- Location Specific Panel Displays -->
       <div class="tabs-content" data-tabs-content="location-tabs">
         <div class="tabs-panel is-active" id="panel1">
-          <p>
-            Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque
-            eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
-            Phasellus molestie magna non est bibendum non venenatis nisl tempor.
-            Suspendisse dictum feugiat nisl ut dapibus.
-          </p>
+          <div class="grid-x">
+            <div class="cell small-4">Box 1</div>
+            <div class="cell small-4">Box 2</div>
+            <div class="cell small-4">Box 3</div>
+          </div>
+          <div class="grid-x">
+            <div class="cell small-3 graph1">
+              <canvas id="deaths-chart"></canvas>
+            </div>
+            <div class="cell small-3 graph2">
+              <canvas id="cases-chart"></canvas>
+            </div>
+            <div class="cell small-3 graph3">
+              <canvas id="tests-chart"></canvas>
+            </div>
+            <div class="cell small-3 graph4">
+              <canvas id="hospitalization-chart"></canvas>
+            </div>
+          </div>
         </div>
         <div class="tabs-panel" id="panel2">
           <p>
@@ -78,22 +91,6 @@
         </div>
       </div>
     </div>
-
-    <!-- CHARTS GO HERE -->
-    <div class="graph1">
-      <canvas id="deaths-chart" width="50" height="50"></canvas>
-    </div>
-    <div class="graph2">
-      <canvas id="cases-chart" width="50" height="50"></canvas>
-    </div>
-    <div class="graph3">
-      <canvas id="tests-chart" width="50" height="50"></canvas>
-    </div>
-    <div class="graph4">
-      <canvas id="hospitalization-chart" width="50" height="50"></canvas>
-    </div>
-
-    <!-- CHARTS END HERE -->
 
     <footer style="bottom: 0; margin: auto; position: fixed">
       <p>&copy; 2020 ANANTGDO</p>
