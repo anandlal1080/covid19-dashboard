@@ -61,4 +61,4 @@ $(document).foundation()
     cont.appendChild(sel_year);
     cont.appendChild(sel_month);
     cont.appendChild(sel_day);
-  }());​
+  }())

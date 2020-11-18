@@ -3,10 +3,32 @@ body {
     background-size: auto;
 }
 
+h3 {
+    text-align: center;
+}
+
 h6 {
     font-weight: bold;
     text-decoration: underline;
     text-align: center;
+}
+
+p {
+    font-size: smaller;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+label{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.btn-click {
+    color: #e6e6e6;
+    background-color: #104263;
+    margin-left: .25rem;
+    margin-right: .25rem;
 }
 
 .datarow {
@@ -26,4 +48,11 @@ h6 {
     justify-content: center;
     align-content: center;
     padding-top: 2rem;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding-bottom: .25rem;
+    padding-top: .25rem;
 }
