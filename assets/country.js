@@ -33,11 +33,11 @@ const countryApi = {
   };
   
   // Build and assign a reference to each chart
-  charts2.deaths.chart = buildChart(document.getElementById("deaths-chart"));
-  charts2.cases.chart = buildChart(document.getElementById("cases-chart"));
-  charts2.recovered.chart = buildChart(document.getElementById("tests-chart"));
+  charts2.deaths.chart = buildChart(document.getElementById("ww-deaths-chart"));
+  charts2.cases.chart = buildChart(document.getElementById("ww-cases-chart"));
+  charts2.recovered.chart = buildChart(document.getElementById("ww-tests-chart"));
   charts2.active.chart = buildChart(
-    document.getElementById("hospitalization-chart")
+    document.getElementById("ww-hospitalization-chart")
   );
   
   let cStartDate = "2020-11-01";
@@ -75,7 +75,7 @@ const countryApi = {
   
         const testCases = charts2.recovered.chart;
         charts2.recovered.labels = results.fullDate;
-        charts2.recovered.values = results.fullTests;
+        charts2.recovered.values = results.fullRcov;
         
         testCases.data.labels = charts2.recovered.labels;
         testCases.data.datasets[0].data = charts2.recovered.values;
@@ -83,7 +83,7 @@ const countryApi = {
   
         const hospCases = charts2.active.chart;
         charts2.active.labels = results.fullDate;
-        charts2.active.values = results.fullHosp;
+        charts2.active.values = results.fullActive;
         
         hospCases.data.labels = charts2.active.labels;
         hospCases.data.datasets[0].data = charts2.active.values;
@@ -93,7 +93,7 @@ const countryApi = {
         chartCases.update();
         testCases.update();
         hospCases.update();
-        console.log();
+        
       });
   }
   
@@ -105,15 +105,15 @@ const countryApi = {
     const values = charts2.deaths.values;
     const casesvalues = charts2.cases.values;
     const casesLabels = charts2.cases.labels;
-    const testsvalues = charts2.tests.values;
-    const testsLabels = charts2.tests.labels;
+    const testsvalues = charts2.recovered.values;
+    const testsLabels = charts2.recovered.labels;
     const labels = charts2.deaths.labels;
     const chart = charts2.deaths.chart;
     const chartCases = charts2.cases.chart;
-    const testCases = charts2.tests.chart;
-    const hospCases = charts2.hospitalization.chart;
-    const hospvalues = charts2.hospitalization.values;
-    const hospLabels = charts2.hospitalization.labels;
+    const testCases = charts2.recovered.chart;
+    const hospCases = charts2.active.chart;
+    const hospvalues = charts2.active.values;
+    const hospLabels = charts2.active.labels;
   
     if (amountOfDays === "total") {
       chart.data.labels = labels;
@@ -170,6 +170,7 @@ const countryApi = {
       fullConfirm[i] = confirm;
       fullRcov[i] = recov;
       fullActive[i] = active;
+      
   }
   
   return {
@@ -178,8 +179,8 @@ const countryApi = {
       fullConfirm: fullConfirm,
       fullRcov: fullRcov,
       fullActive: fullActive,
-  };
-  }
+    };
+}
   
   
   

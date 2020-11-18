@@ -95,7 +95,7 @@ function getStatesResults(state) {
       chartCases.update();
       testCases.update();
       hospCases.update();
-      console.log();
+      
     });
 }
 
