@@ -18,11 +18,6 @@
         <div class="large-12 cell">
           <h1 style="text-align: center">Welcome to the COVID-19 Dashboard</h1>
         </div>
-        <div id="day-toggle">
-          <button class="button success" value="60">60 Day</button>
-          <button class="button success" value="90">90 Day</button>
-          <button class="button success" value="total">Reset</button>
-        </div>
       </div>
 
       <div class="grid-x grid-padding-x">
@@ -60,23 +55,50 @@
 
       <!-- Location Specific Panel Displays -->
       <div class="tabs-content" data-tabs-content="location-tabs">
+        <!-- Display Tab for United States -->
         <div class="tabs-panel is-active" id="panel1">
-          <div class="grid-x">
-            <div class="cell small-4">Box 1</div>
-            <div class="cell small-4">Box 2</div>
-            <div class="cell small-4">Box 3</div>
+          <!-- Input data Section of US Tab -->
+          <div class="grid-x grid-margin-x datarow">
+            <!-- Enter State Field -->
+            <div class="cell small-4 datacell">
+              <form>
+                <div class="grid-x grid-padding-x">
+                  <div class="small-12 cell">
+                    <label>Enter State</label>
+                    <input type="text" placeholder="Enter State" />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- Preset Date Range Toggles -->
+            <div class="cell small-4 datacell" id="day-toggle">
+              <button class="button success" value="60">60 Day</button>
+              <button class="button success" value="90">90 Day</button>
+              <button class="button success" value="total">Reset</button>
+            </div>
+            <!-- Calendar Date Range Selector -->
+            <div class="cell small-4 datacell">
+              <p>Date: <input type="date" id="calendar-container"></p>
+            </div>
           </div>
-          <div class="grid-x">
-            <div class="cell small-3 graph1">
+          <!-- Statistical Graphs -->
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Deaths</h6>
               <canvas id="deaths-chart"></canvas>
             </div>
-            <div class="cell small-3 graph2">
+            <div class="cell small-6">
+              <h6>Total Cases</h6>
               <canvas id="cases-chart"></canvas>
             </div>
-            <div class="cell small-3 graph3">
+          </div>
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Tests</h6>
               <canvas id="tests-chart"></canvas>
             </div>
-            <div class="cell small-3 graph4">
+            <div class="cell small-6">
+              <h6>Total Hospitalizations</h6>
               <canvas id="hospitalization-chart"></canvas>
             </div>
           </div>
