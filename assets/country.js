@@ -99,7 +99,7 @@ const countryApi = {
   
   
   // Assign Event listener to the day toggler buttons
-  $("#day-toggle").on("click", "button", function (e) {
+  $("#ww-toggle").on("click", "button", function (e) {
     const amountOfDays = $(this).val();
     console.log(amountOfDays);
     const values = charts2.deaths.values;
