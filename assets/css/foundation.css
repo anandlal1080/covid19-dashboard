@@ -5194,7 +5194,8 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   .tabs-title > a {
     display: block;
     padding: 1.25rem 1.5rem;
-    font-size: 0.75rem;
+    /* font-size: 0.75rem; <--original modified for project */
+    font-size: 1rem;
     line-height: 1;
     color: #1779ba; }
     [data-whatinput='mouse'] .tabs-title > a {
