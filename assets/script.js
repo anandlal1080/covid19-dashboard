@@ -1,7 +1,3 @@
-const countryApi = {
-  base: "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/",
-};
-
 const stateApi = {
   base: "https://api.covidtracking.com/v1/states/",
 };
