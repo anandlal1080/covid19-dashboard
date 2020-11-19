@@ -1,7 +1,3 @@
-const countryApi = {
-  base: "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/",
-};
-
 const stateApi = {
   base: "https://api.covidtracking.com/v1/states/",
 };
@@ -13,24 +9,32 @@ const charts = {
     values: [],
     chart: {},
     label: "# of Deaths",
+    background: "rgba(255, 99, 132, 0.2)",
+    border: "rgba(255, 99, 132, 1)"
   },
   cases: {
     labels: [],
     values: [],
     chart: {},
     label: "# of Cases",
+    background: "rgba(54, 162, 235, 0.2)",
+    border: "rgba(54, 162, 235, 1)",
   },
   tests: {
     labels: [],
     values: [],
     chart: {},
     label: "# of Tests",
+    background: "rgba(255, 206, 86, 1)",
+    border: "rgba(255, 206, 86, 1)",
   },
   hospitalization: {
     labels: [],
     values: [],
     chart: {},
     label: "# of Hospitalizations",
+    background: "rgba(153, 102, 255, 0.2)",
+    border: "rgba(153, 102, 255, 1)",
   },
 };
 
@@ -70,6 +74,8 @@ function getStatesResults(state) {
       chart.data.labels = charts.deaths.labels;
       chart.data.datasets[0].data = charts.deaths.values;
       chart.data.datasets[0].label = charts.deaths.label;
+      chart.data.datasets[0].backgroundColor = charts.deaths.background;
+      chart.data.datasets[0].borderColor = charts.deaths.border;
       
       const chartCases = charts.cases.chart;
       charts.cases.labels = results.fullDate;
@@ -78,6 +84,8 @@ function getStatesResults(state) {
       chartCases.data.labels = charts.cases.labels;
       chartCases.data.datasets[0].data = charts.cases.values;
       chartCases.data.datasets[0].label = charts.cases.label;
+      chartCases.data.datasets[0].backgroundColor = charts.cases.background;
+      chartCases.data.datasets[0].borderColor = charts.cases.border;
 
       const testCases = charts.tests.chart;
       charts.tests.labels = results.fullDate;
@@ -86,6 +94,8 @@ function getStatesResults(state) {
       testCases.data.labels = charts.tests.labels;
       testCases.data.datasets[0].data = charts.tests.values;
       testCases.data.datasets[0].label = charts.tests.label;
+      testCases.data.datasets[0].backgroundColor = charts.tests.background;
+      testCases.data.datasets[0].borderColor = charts.tests.border;
 
       const hospCases = charts.hospitalization.chart;
       charts.hospitalization.labels = results.fullDate;
@@ -94,12 +104,14 @@ function getStatesResults(state) {
       hospCases.data.labels = charts.hospitalization.labels;
       hospCases.data.datasets[0].data = charts.hospitalization.values;
       hospCases.data.datasets[0].label = charts.hospitalization.label;
+      hospCases.data.datasets[0].backgroundColor = charts.hospitalization.background;
+      hospCases.data.datasets[0].borderColor = charts.hospitalization.border;
 
       chart.update();
       chartCases.update();
       testCases.update();
       hospCases.update();
-      console.log();
+      
     });
 }
 
