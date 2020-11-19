@@ -8,9 +8,13 @@
     <!-- Foundation CSS Framework -->
     <link rel="stylesheet" href="assets/css/foundation.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/lightpick.css" />
+    <link rel="stylesheet/scss" href="assets/scss/lightpick.scss" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!--JS Date Range-->
+    
   </head>
   <body>
     <div class="grid-container">
@@ -72,10 +76,24 @@
             </div>
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
+<<<<<<< HEAD
               <label>Select State:</label>
               <select style="width:auto;" name="state" id="state">
                 <option value="">Please select a State</option>
               </select>
+=======
+              <label>Select Date Range</label>
+              <p>
+                <!-- <input type="text" id="start">
+                <input type="text" id="end"> -->
+                <input type="date" id="start" name="date-start"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+                <input type="date" id="end" name="date-end"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+              </p>
+>>>>>>> 495f37b46e8e36ac548f5a89b1a71ea118818f73
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -136,7 +154,14 @@
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
               <label>Select Date Range</label>
-              <p><input type="date" id="calendar-container"></p>
+              <p>
+                <input type="date" id="country-start" name="date-start"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+                <input type="date" id="country-end" name="date-end"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+              </p>
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -173,9 +198,13 @@
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
+    <script src="assets/moment.js"></script>
     <script src="assets/js/app.js"></script>
     <!-- JavaScript -->
     <script src="assets/script.js"></script>
+    <!--Date Range Selector-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="assets/lightpick.js"></script>
     <script src="assets/country.js"></script>
   </body>
 </html>
