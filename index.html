@@ -8,9 +8,13 @@
     <!-- Foundation CSS Framework -->
     <link rel="stylesheet" href="assets/css/foundation.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/lightpick.css" />
+    <link rel="stylesheet/scss" href="assets/scss/lightpick.scss" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!--JS Date Range-->
+    
   </head>
   <body>
     <div class="grid-container">
@@ -54,13 +58,13 @@
           <div class="grid-x grid-margin-x datarow">
             <!-- Enter State Field -->
             <div class="cell small-4 datacell">
-              <form>
-                <div class="grid-x grid-padding-x">
-                  <div class="small-12 cell">
-                    <label>Enter State</label>
-                    <input type="text" placeholder="Enter State" />
-                  </div>
-                </div>
+              <form action="/action_page.php">
+                <label for="state">Choose a State:</label>
+                <select name="states" id="states">
+                </select>
+                <!-- <input type="submit" name="sbt_populate_select" id="sbt_populate_select" value="Populate Dropdown" /> -->
+                <br><br>
+                <input type="submit" value="Submit" id='stateSubmit'>
               </form>
             </div>
             <!-- Preset Date Range Toggles -->
@@ -72,8 +76,24 @@
             </div>
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
+<<<<<<< HEAD
+              <label>Select State:</label>
+              <select style="width:auto;" name="state" id="state">
+                <option value="">Please select a State</option>
+              </select>
+=======
               <label>Select Date Range</label>
-              <p><input type="date" id="calendar-container"></p>
+              <p>
+                <!-- <input type="text" id="start">
+                <input type="text" id="end"> -->
+                <input type="date" id="start" name="date-start"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+                <input type="date" id="end" name="date-end"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+              </p>
+>>>>>>> 495f37b46e8e36ac548f5a89b1a71ea118818f73
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -104,13 +124,24 @@
           <div class="grid-x grid-margin-x datarow">
             <!-- Enter State Field -->
             <div class="cell small-4 datacell">
-              <form>
-                <div class="grid-x grid-padding-x">
-                  <div class="small-12 cell">
-                    <label>Enter Country</label>
-                    <input type="text" placeholder="Enter Country" />
-                  </div>
-                </div>
+              <form action="/action_page.php">
+                <label for="country">Choose a Country:</label>
+                <select name="country" id="country">
+                  <option value="unitedstates">United States</option>
+                  <option value="canada">Canada</option>
+                  <option value="mexico">Mexico</option>
+                  <option value="panama">Panama</option>
+                  <option value="haiti">Haiti</option>
+                  <option value="jamaica">Jamaica</option>
+                  <option value="peru">Peru</option>
+                  <option value="republicdominican">Republic Dominican</option>
+                  <option value="cuba">Cuba</option>
+                  <option value="carribean">Carribean</option>
+                  <option value="greenland">Greenland</option>
+                  <option value="elsalvador">El Salvador</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Submit">
               </form>
             </div>
             <!-- Preset Date Range Toggles -->
@@ -123,7 +154,14 @@
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
               <label>Select Date Range</label>
-              <p><input type="date" id="calendar-container"></p>
+              <p>
+                <input type="date" id="country-start" name="date-start"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+                <input type="date" id="country-end" name="date-end"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+              </p>
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -160,9 +198,13 @@
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
+    <script src="assets/moment.js"></script>
     <script src="assets/js/app.js"></script>
     <!-- JavaScript -->
     <script src="assets/script.js"></script>
+    <!--Date Range Selector-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="assets/lightpick.js"></script>
     <script src="assets/country.js"></script>
   </body>
 </html>
