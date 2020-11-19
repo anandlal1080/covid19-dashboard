@@ -11,24 +11,32 @@ const countryApi = {
       values: [],
       chart: {},
       label: "# of Deaths",
+      background: "rgba(255, 99, 132, 0.2)",
+      border: "rgba(255, 99, 132, 1)"
     },
     cases: {
       labels: [],
       values: [],
       chart: {},
       label: "Total # of Cases",
+      background: "rgba(54, 162, 235, 0.2)",
+      border: "rgba(54, 162, 235, 1)",
     },
     recovered: {
       labels: [],
       values: [],
       chart: {},
       label: "# of Recovered",
+      background: "rgba(255, 206, 86, 1)",
+      border: "rgba(255, 206, 86, 1)",
     },
     active: {
       labels: [],
       values: [],
       chart: {},
       label: "# of Active Cases",
+      background: "rgba(153, 102, 255, 0.2)",
+      border: "rgba(153, 102, 255, 1)",
     },
   };
   
@@ -64,6 +72,8 @@ const countryApi = {
         chart.data.labels = charts2.deaths.labels;
         chart.data.datasets[0].data = charts2.deaths.values;
         chart.data.datasets[0].label = charts2.deaths.label;
+        chart.data.datasets[0].backgroundColor = charts.deaths.background;
+        chart.data.datasets[0].borderColor = charts.deaths.border;
         
         const chartCases = charts2.cases.chart;
         charts2.cases.labels = results.fullDate;
@@ -72,6 +82,8 @@ const countryApi = {
         chartCases.data.labels = charts2.cases.labels;
         chartCases.data.datasets[0].data = charts2.cases.values;
         chartCases.data.datasets[0].label = charts2.cases.label;
+        chartCases.data.datasets[0].backgroundColor = charts.cases.background;
+        chartCases.data.datasets[0].borderColor = charts.cases.border;
   
         const testCases = charts2.recovered.chart;
         charts2.recovered.labels = results.fullDate;
@@ -80,6 +92,8 @@ const countryApi = {
         testCases.data.labels = charts2.recovered.labels;
         testCases.data.datasets[0].data = charts2.recovered.values;
         testCases.data.datasets[0].label = charts2.recovered.label;
+        testCases.data.datasets[0].backgroundColor = charts.tests.background;
+        testCases.data.datasets[0].borderColor = charts.tests.border;
   
         const hospCases = charts2.active.chart;
         charts2.active.labels = results.fullDate;
@@ -88,6 +102,8 @@ const countryApi = {
         hospCases.data.labels = charts2.active.labels;
         hospCases.data.datasets[0].data = charts2.active.values;
         hospCases.data.datasets[0].label = charts2.active.label;
+        hospCases.data.datasets[0].backgroundColor = charts.hospitalization.background;
+        hospCases.data.datasets[0].borderColor = charts.hospitalization.border;
   
         chart.update();
         chartCases.update();
