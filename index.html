@@ -8,8 +8,8 @@
     <!-- Foundation CSS Framework -->
     <link rel="stylesheet" href="assets/css/foundation.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
-    <link rel="stylesheet" href="./assets/css/lightpick.css" />
-    <link rel="stylesheet/scss" href="./assets/scss/lightpick.scss" />
+    <link rel="stylesheet" href="assets/css/lightpick.css" />
+    <link rel="stylesheet/scss" href="assets/scss/lightpick.scss" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -78,8 +78,14 @@
             <div class="cell small-4 datacell">
               <label>Select Date Range</label>
               <p>
-                <input type="text" id="start">
-                <input type="text" id="end">
+                <!-- <input type="text" id="start">
+                <input type="text" id="end"> -->
+                <input type="date" id="start" name="date-start"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
+                <input type="date" id="end" name="date-end"
+                value="2020-11-19"
+                min="2020-01-01" max="2020-12-31">
               </p>
             </div>
           </div>
@@ -167,6 +173,7 @@
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
+    <script src="assets/moment.js"></script>
     <script src="assets/js/app.js"></script>
     <!-- JavaScript -->
     <script src="assets/script.js"></script>

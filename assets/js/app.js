@@ -63,18 +63,34 @@ $(document).foundation()
 //     cont.appendChild(sel_day);
 //   }());​
 
-  $("input").daterangepicker({
-    minDate: moment().subtract(2, 'years')
-  }, function (startDate, endDate, period) {
-    $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
-  });
+//   $("input").daterangepicker({
+//     minDate: moment().subtract(2, 'years')
+//   }, function (startDate, endDate, period) {
+//     $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
+//   });
 
-  const elem = document.getElementById('range');
-const dateRangePicker = new DateRangePicker(elem, {
-      // options here
-});
+//   const elem = document.getElementById('range');
+// const dateRangePicker = new DateRangePicker(elem, {
+//       // options here
+// });
 
-const myPicker = new lightPick({
-    field: document.getElementById('demo'),
-    singleDate: false
-});
+// const myPicker = new lightPick({
+//     field: document.getElementById('demo'),
+//     singleDate: false
+// });
+
+// const myPicker = new lightPick({
+//     field: document.getElementById('start'),
+//     secondField: document.getElementById('end')
+// });
+// var picker = new Lightpick({
+//     field: document.getElementById('start'),
+//     secondField: document.getElementById('end'),
+//     singleDate: false,
+//     onSelect: function(start, end){
+//         var str = '';
+//         str += start ? start.format('Do MMMM YYYY') + ' to ' : '';
+//         str += end ? end.format('Do MMMM YYYY') : '...';
+//         // document.getElementById('result-3').innerHTML = str;
+//     }
+// });
