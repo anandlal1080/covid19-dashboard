@@ -8,9 +8,13 @@
     <!-- Foundation CSS Framework -->
     <link rel="stylesheet" href="assets/css/foundation.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="./assets/css/lightpick.css" />
+    <link rel="stylesheet/scss" href="./assets/scss/lightpick.scss" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!--JS Date Range-->
+    
   </head>
   <body>
     <div class="grid-container">
@@ -78,7 +82,10 @@
             </div>
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
-              <p>Date: <input type="date" id="calendar-container"></p>
+              <p>
+                <input type="text" id="start">
+                <input type="text" id="end">
+              </p>
             </div>
           </div>
           <!-- Statistical Graphs -->
@@ -125,5 +132,8 @@
     <script src="assets/js/app.js"></script>
     <!-- JavaScript -->
     <script src="assets/script.js"></script>
+    <!--Date Range Selector-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="assets/lightpick.js"></script>
   </body>
 </html>
