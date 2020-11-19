@@ -45,9 +45,15 @@ charts.tests.chart = buildChart(document.getElementById("tests-chart"));
 charts.hospitalization.chart = buildChart(
   document.getElementById("hospitalization-chart")
 );
-
 let startDate = "2020-11-01";
+$("#start").on('change', function (e) {
+  startDate = e.target.value
+})
+
 let endDate = "2020-11-06";
+$("#end").on('change', function (e) {
+  endDate = e.target.value
+})
 let state = "CO";
 // getCountryResults(startDate,endDate);
 getStatesResults(state);
@@ -119,7 +125,6 @@ function getStatesResults(state) {
 // Assign Event listener to the day toggler buttons
 $("#day-toggle").on("click", "button", function (e) {
   const amountOfDays = $(this).val();
-  console.log(amountOfDays);
   const values = charts.deaths.values;
   const casesvalues = charts.cases.values;
   const casesLabels = charts.cases.labels;
@@ -143,7 +148,7 @@ $("#day-toggle").on("click", "button", function (e) {
     hospCases.data.datasets[0].data = hospvalues;
     hospCases.data.labels = hospLabels;
 
-
+  
     chart.update();
     chartCases.update();
     testCases.update();
