@@ -51,17 +51,9 @@ $("#end").on('change', function (e) {
   endDate = e.target.value
 })
 let state = "CO";
-// getCountryResults(startDate,endDate);
+
 getStatesResults(state);
-// function getCountryResults(startDate, endDate) {
-//     fetch(`${countryApi.base}${startDate}/${endDate}`)
-//     .then(countryData => {
-//         return countryData.json();
 
-//     }).then(displayResults)
-// }
-
-// Request Covid data based off of our state
 function getStatesResults(state) {
   fetch(`${stateApi.base}${state}/daily.json`)
     .then((stateData) => stateData.json())
