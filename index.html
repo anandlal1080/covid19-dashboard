@@ -1,205 +1,224 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COVID-19 Dashboard</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COVID-19 Dashboard</title>
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/foundation.css" />
-  <link rel="stylesheet" href="assets/css/app.css" />
-  <link rel="stylesheet" href="assets/css/lightpick.css" />
-  <link rel="stylesheet/scss" href="assets/scss/lightpick.scss" />
-  <link rel="stylesheet" href="assets/style.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/foundation.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/lightpick.css" />
+    <link rel="stylesheet/scss" href="assets/scss/lightpick.scss" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
 
-</head>
-
-<body>
-  <div class="grid-container">
-
-    <!-- Begin Header Content -->
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
-        <h1 style="text-align: center">Welcome to the COVID-19 Dashboard</h1>
-      </div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
-        <div class="callout">
-          <h3>
-            Please click on the tabs to switch between the United States and
-            World data.
-          </h3>
-          <p>Below you will find graphical repesentations of the number of COVID-19 reported tests, cases,
-            hospitalizations, and deaths. By default you will see those statistics for the United States or Worldwide
-            from March 05, 2020 to present day depending on which tab you select. You can refine the data by entering a
-            specific state (United States tab) or country (Worldwide tab). You can further refine the data by either
-            toggling one of the date range buttons or selecting a specific date range with the calendar.</p>
-          <p>The data available only covers March 2020 through present day.</p>
+  <body>
+    <div class="grid-container">
+      <!-- Begin Header Content -->
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h1 style="text-align: center">Welcome to the COVID-19 Dashboard</h1>
         </div>
       </div>
-    </div>
-    <!-- End Header Content -->
-
-    <!-- Begin Content Section -->
-    <!-- Location Selection Tabs - US or Worldwide - US Default -->
-    <div class="row">
-      <div class="columns">
-        <ul class="tabs" data-tabs id="location-tabs">
-          <li class="tabs-title is-active">
-            <a href="#panel1" aria-selected="true">United States Data</a>
-          </li>
-          <li class="tabs-title">
-            <a data-tabs-target="panel2" href="#panel2">Worldwide Data</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Begin Location Specific Content Section -->
-    <div class="tabs-content" data-tabs-content="location-tabs">
-
-      <!-- Display Tab for United States -->
-      <div class="tabs-panel is-active" id="panel1">
-
-        <!-- Begin Data Input Section of US Tab -->
-        <div class="grid-x grid-margin-x datarow">
-
-          <!-- State Selection -->
-          <div class="cell small-4 datacell">
-            <form action="/action_page.php">
-              <label for="state">Choose a State:</label>
-              <select name="states" id="states">
-              </select>
-            </form>
-          </div>
-
-          <!-- Set Date Range -->
-          <div class="cell small-4 datacell">
-            <label>Set Start &amp; End Date</label>
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <div class="callout">
+            <h3>
+              Please click on the tabs to switch between the United States and
+              World data.
+            </h3>
             <p>
-              <input type="date" id="start" name="date-start" value="2020-11-19" min="2020-01-01" max="2020-12-31">
-              <input type="date" id="end" name="date-end" value="2020-11-19" min="2020-01-01" max="2020-12-31">
+              Below you will find graphical repesentations of the number of
+              COVID-19 reported tests, cases, hospitalizations, and deaths. By
+              default you will see those statistics for the United States or
+              Worldwide from March 05, 2020 to present day depending on which
+              tab you select. You can refine the data by entering a specific
+              state (United States tab) or country (Worldwide tab). You can
+              further refine the data by either toggling one of the date range
+              buttons or selecting a specific date range with the calendar.
+            </p>
+            <p>
+              The data available only covers March 2020 through present day.
             </p>
           </div>
-
-          <!-- Preset Date Range Toggles -->
-          <div class="cell small-4 datacell" id="day-toggle">
-            <label>Select Quick Range</label>
-            <button class="button btn-click" value="60">60 Day</button>
-            <button class="button btn-click" value="90">90 Day</button>
-            <button class="button btn-click" value="total">Reset</button>
-          </div>
-
         </div>
+      </div>
+      <!-- End Header Content -->
 
-        <!-- Begin US Graphs -->
-        <!-- Statistical Graphs -->
-        <div class="grid-x grid-margin-x graphrow">
-          <div class="cell small-6">
-            <h6>Total Cases</h6>
-            <canvas id="cases-chart"></canvas>
-          </div>
-          <div class="cell small-6">
-            <h6>Total Deaths</h6>
-            <canvas id="deaths-chart"></canvas>
-          </div>
+      <!-- Begin Content Section -->
+      <!-- Location Selection Tabs - US or Worldwide - US Default -->
+      <div class="row">
+        <div class="columns">
+          <ul class="tabs" data-tabs id="location-tabs">
+            <li class="tabs-title is-active">
+              <a href="#panel1" aria-selected="true">United States Data</a>
+            </li>
+            <li class="tabs-title">
+              <a data-tabs-target="panel2" href="#panel2">Worldwide Data</a>
+            </li>
+          </ul>
         </div>
-        <div class="grid-x grid-margin-x graphrow">
-          <div class="cell small-6">
-            <h6>Total Hospitalizations</h6>
-            <canvas id="hospitalization-chart"></canvas>
-          </div>
-          <div class="cell small-6">
-            <h6>Total Tests</h6>
-            <canvas id="tests-chart"></canvas>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Display Tab for Worldwide Data -->
-      <div class="tabs-panel" id="panel2">
+      <!-- Begin Location Specific Content Section -->
+      <div class="tabs-content" data-tabs-content="location-tabs">
+        <!-- Display Tab for United States -->
+        <div class="tabs-panel is-active" id="panel1">
+          <!-- Begin Data Input Section of US Tab -->
+          <div class="grid-x grid-margin-x datarow">
+            <!-- State Selection -->
+            <div class="cell small-4 datacell">
+              <form action="/action_page.php">
+                <label for="state">Choose a State:</label>
+                <select name="states" id="states"></select>
+              </form>
+            </div>
 
-        <!-- Begin Data Input Section of Worldwide Tab -->
-        <div class="grid-x grid-margin-x datarow">
+            <!-- Set Date Range -->
+            <div class="cell small-4 datacell">
+              <label>Set Start &amp; End Date</label>
+              <p>
+                <input
+                  type="date"
+                  id="start"
+                  name="date-start"
+                  value="2020-03-01"
+                  min="2020-01-01"
+                  max="2022-12-31"
+                />
+                <input
+                  type="date"
+                  id="end"
+                  name="date-end"
+                  value="2020-11-19"
+                  min="2020-01-01"
+                  max="2022-12-31"
+                />
+              </p>
+            </div>
 
-          <!-- Country Selection -->
-          <div class="cell small-4 datacell">
-            <form action="/action_page.php">
-              <label for="countries">Choose a Country:</label>
-              <select name="countries" id="countries">
-              </select>
-            </form>
+            <!-- Preset Date Range Toggles -->
+            <div class="cell small-4 datacell" id="day-toggle">
+              <label>Select Quick Range</label>
+              <button class="button btn-click" value="60">60 Day</button>
+              <button class="button btn-click" value="90">90 Day</button>
+              <button class="button btn-click" value="total">Reset</button>
+            </div>
           </div>
 
-          <!-- Set Calendar Date Range -->
-          <div class="cell small-4 datacell">
-            <label>Set Start &amp; End Date</label>
-            <p>
-              <input type="date" id="country-start" name="date-start" value="2020-11-19" min="2020-01-01"
-                max="2020-12-31">
-              <input type="date" id="country-end" name="date-end" value="2020-11-19" min="2020-01-01" max="2020-12-31">
-            </p>
+          <!-- Begin US Graphs -->
+          <!-- Statistical Graphs -->
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Cases</h6>
+              <canvas id="cases-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Deaths</h6>
+              <canvas id="deaths-chart"></canvas>
+            </div>
           </div>
-
-          <!-- Preset Date Range Toggles -->
-          <div class="cell small-4 datacell" id="ww-toggle">
-            <label>Select Quick Range</label>
-            <button class="button btn-click" value="60">60 Day</button>
-            <button class="button btn-click" value="90">90 Day</button>
-            <button class="button btn-click" value="total">Reset</button>
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Hospitalizations</h6>
+              <canvas id="hospitalization-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Tests</h6>
+              <canvas id="tests-chart"></canvas>
+            </div>
           </div>
-
         </div>
 
-        <!-- Begin Worldwide Graphs -->
-        <!-- Statistical Graphs -->
-        <div class="grid-x grid-margin-x graphrow">
-          <div class="cell small-6">
-            <h6>Active Cases</h6>
-            <canvas id="ww-hospitalization-chart"></canvas>
+        <!-- Display Tab for Worldwide Data -->
+        <div class="tabs-panel" id="panel2">
+          <!-- Begin Data Input Section of Worldwide Tab -->
+          <div class="grid-x grid-margin-x datarow">
+            <!-- Country Selection -->
+            <div class="cell small-4 datacell">
+              <form action="/action_page.php">
+                <label for="countries">Choose a Country:</label>
+                <select name="countries" id="countries"></select>
+              </form>
+            </div>
+
+            <!-- Set Calendar Date Range -->
+            <div class="cell small-4 datacell">
+              <label>Set Start &amp; End Date</label>
+              <p>
+                <input
+                  type="date"
+                  id="country-start"
+                  name="date-start"
+                  value="2020-03-01"
+                  min="2020-01-01"
+                  max="2022-12-31"
+                />
+                <input
+                  type="date"
+                  id="country-end"
+                  name="date-end"
+                  value="2020-11-19"
+                  min="2020-01-01"
+                  max="2022-12-31"
+                />
+              </p>
+            </div>
+
+            <!-- Preset Date Range Toggles -->
+            <div class="cell small-4 datacell" id="ww-toggle">
+              <label>Select Quick Range</label>
+              <button class="button btn-click" value="60">60 Day</button>
+              <button class="button btn-click" value="90">90 Day</button>
+              <button class="button btn-click" value="total">Reset</button>
+            </div>
           </div>
-          <div class="cell small-6">
-            <h6>Total Cases</h6>
-            <canvas id="ww-cases-chart"></canvas>
+
+          <!-- Begin Worldwide Graphs -->
+          <!-- Statistical Graphs -->
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Active Cases</h6>
+              <canvas id="ww-hospitalization-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Cases</h6>
+              <canvas id="ww-cases-chart"></canvas>
+            </div>
           </div>
+          <div class="grid-x grid-margin-x graphrow">
+            <div class="cell small-6">
+              <h6>Total Deaths</h6>
+              <canvas id="ww-deaths-chart"></canvas>
+            </div>
+            <div class="cell small-6">
+              <h6>Total Recovered</h6>
+              <canvas id="ww-tests-chart"></canvas>
+            </div>
+          </div>
+          <!-- End Worldwide Content -->
         </div>
-        <div class="grid-x grid-margin-x graphrow">
-          <div class="cell small-6">
-            <h6>Total Deaths</h6>
-            <canvas id="ww-deaths-chart"></canvas>
-          </div>
-          <div class="cell small-6">
-            <h6>Total Recovered</h6>
-            <canvas id="ww-tests-chart"></canvas>
-          </div>
-        </div>
-        <!-- End Worldwide Content -->
       </div>
+      <!-- End  Location Specific Content Section -->
     </div>
-    <!-- End  Location Specific Content Section -->
-  </div>
 
+    <footer>
+      <p>&copy; 2020 ANANTGDO</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2020 ANANTGDO</p>
-  </footer>
-
-  <!--JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"></script>
-  <script src="assets/js/vendor/jquery.js"></script>
-  <script src="assets/js/vendor/what-input.js"></script>
-  <script src="assets/js/vendor/foundation.js"></script>
-  <script src="assets/moment.js"></script>
-  <script src="assets/js/app.js"></script>
-  <script src="assets/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
-  <script src="assets/lightpick.js"></script>
-  <script src="assets/country.js"></script>
-</body>
-
+    <!--JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"></script>
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/what-input.js"></script>
+    <script src="assets/js/vendor/foundation.js"></script>
+    <script src="assets/moment.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+    <script src="assets/lightpick.js"></script>
+    <script src="assets/country.js"></script>
+  </body>
 </html>
