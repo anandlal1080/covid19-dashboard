@@ -238,6 +238,9 @@ const countryApi = {
         ],
       },
       options: {
+        legend: {
+          display: false
+        },
         scales: {
           yAxes: [
             {

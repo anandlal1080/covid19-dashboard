@@ -221,7 +221,7 @@ Chart.defaults.global.defaultFontColor = 'blue';
       labels: [],
       datasets: [
         {
-          label: "# ",
+          label: "",
           data: [],
           backgroundColor: grd,
           borderColor: [
@@ -233,6 +233,9 @@ Chart.defaults.global.defaultFontColor = 'blue';
       ],
     },
     options: {
+      legend: {
+        display: false
+      },
       scales: {
         yAxes: [
           {
