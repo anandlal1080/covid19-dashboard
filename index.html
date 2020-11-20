@@ -13,11 +13,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <!--JS Date Range-->
     
   </head>
   <body>
     <div class="grid-container">
+      <!-- Begin Header Content -->
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
           <h1 style="text-align: center">Welcome to the COVID-19 Dashboard</h1>
@@ -36,7 +36,9 @@
           </div>
         </div>
       </div>
-      <!-- Display Tabs for High Level Location Selection -->
+
+      <!-- Begin Content Section -->
+      <!-- Location Selection Tabs - US or Worldwide - US Default -->
       <div class="row">
         <div class="columns">
           <ul class="tabs" data-tabs id="location-tabs">
@@ -50,13 +52,16 @@
         </div>
       </div>
 
-      <!-- Location Specific Panel Displays -->
+      <!-- Begin Location Specific Content Section -->
       <div class="tabs-content" data-tabs-content="location-tabs">
+
         <!-- Display Tab for United States -->
         <div class="tabs-panel is-active" id="panel1">
-          <!-- Input data Section of US Tab -->
+
+          <!-- Begin Data Input Section of US Tab -->
           <div class="grid-x grid-margin-x datarow">
-            <!-- Enter State Field -->
+
+            <!-- State Selection -->
             <div class="cell small-4 datacell">
               <form action="/action_page.php">
                 <label for="state">Choose a State:</label>
@@ -66,6 +71,7 @@
                 <input type="submit" value="Submit" id='stateSubmit'>
               </form>
             </div>
+
             <!-- Preset Date Range Toggles -->
             <div class="cell small-4 datacell" id="day-toggle">
               <label>Select Quick Range</label>
@@ -73,12 +79,11 @@
               <button class="button btn-click" value="90">90 Day</button>
               <button class="button btn-click" value="total">Reset</button>
             </div>
+
             <!-- Calendar Date Range Selector -->
             <div class="cell small-4 datacell">
               <label>Select Date Range</label>
               <p>
-                <!-- <input type="text" id="start">
-                <input type="text" id="end"> -->
                 <input type="date" id="start" name="date-start"
                 value="2020-11-19"
                 min="2020-01-01" max="2020-12-31">
@@ -88,33 +93,38 @@
               </p>
             </div>
           </div>
+
+          <!-- Begin US Graphs -->
           <!-- Statistical Graphs -->
           <div class="grid-x grid-margin-x graphrow">
-            <div class="cell small-6">
-              <h6>Total Deaths</h6>
-              <canvas id="deaths-chart"></canvas>
-            </div>
             <div class="cell small-6">
               <h6>Total Cases</h6>
               <canvas id="cases-chart"></canvas>
             </div>
+            <div class="cell small-6">
+              <h6>Total Deaths</h6>
+              <canvas id="deaths-chart"></canvas>
+            </div>
           </div>
           <div class="grid-x grid-margin-x graphrow">
-            <div class="cell small-6">
-              <h6>Total Tests</h6>
-              <canvas id="tests-chart"></canvas>
-            </div>
             <div class="cell small-6">
               <h6>Total Hospitalizations</h6>
               <canvas id="hospitalization-chart"></canvas>
             </div>
+            <div class="cell small-6">
+              <h6>Total Tests</h6>
+              <canvas id="tests-chart"></canvas>
+            </div>
           </div>
         </div>
-        <!-- Display Tap for Worldwid Data -->
+
+        <!-- Display Tap for Worldwide Data -->
         <div class="tabs-panel" id="panel2">
-          <!-- Input data Section of US Tab -->
+
+          <!-- Begin Data Input Section of Worldwide Tab -->
           <div class="grid-x grid-margin-x datarow">
-            <!-- Enter State Field -->
+
+            <!-- Country Selection -->
             <div class="cell small-4 datacell">
               <form action="/action_page.php">
                 <label for="countries">Choose a Country:</label>
@@ -147,8 +157,8 @@
           <!-- Statistical Graphs -->
           <div class="grid-x grid-margin-x graphrow">
             <div class="cell small-6">
-              <h6>Total Deaths</h6>
-              <canvas id="ww-deaths-chart"></canvas>
+              <h6>Active Cases</h6>
+              <canvas id="ww-hospitalization-chart"></canvas>
             </div>
             <div class="cell small-6">
               <h6>Total Cases</h6>
@@ -157,12 +167,12 @@
           </div>
           <div class="grid-x grid-margin-x graphrow">
             <div class="cell small-6">
-              <h6>Total Tests</h6>
-              <canvas id="ww-tests-chart"></canvas>
+              <h6>Total Deaths</h6>
+              <canvas id="ww-deaths-chart"></canvas>
             </div>
             <div class="cell small-6">
-              <h6>Total Hospitalizations</h6>
-              <canvas id="ww-hospitalization-chart"></canvas>
+              <h6>Total Recovered</h6>
+              <canvas id="ww-tests-chart"></canvas>
             </div>
           </div>
         </div>
