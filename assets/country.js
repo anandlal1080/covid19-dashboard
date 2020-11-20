@@ -187,6 +187,8 @@ const countryApi = {
       var date = countryData[i].Date;
         date = date.split("T");
         date = date[0];
+               
+        
       var death = countryData[i].Deaths;
       var confirm = countryData[i].Confirmed;
       var recov = countryData[i].Recovered;

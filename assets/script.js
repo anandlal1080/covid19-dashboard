@@ -41,18 +41,19 @@ charts.tests.chart = buildChart(document.getElementById("tests-chart"));
 charts.hospitalization.chart = buildChart(
   document.getElementById("hospitalization-chart")
 );
-let startDate = "2020-11-01";
+let startDate = "";
 $("#start").on('change', function (e) {
   startDate = e.target.value
 })
 
-let endDate = "2020-11-06";
+let endDate = "";
 $("#end").on('change', function (e) {
   endDate = e.target.value
+  getStatesResults(state);
 })
 
 
-let state = "CO";
+let state = "";
 $("#states").on('change', function (e) {
   state = states_array[e.target.value]
   getStatesResults(state);
@@ -169,21 +170,28 @@ function displayStateResults(stateData) {
   let fullCases = [];
   let fullTests = [];
   let fullHosp = [];
-
+  let count = 0;
+  
   for (let i = 0; i < stateData.length; i++) {
 
     
     var date = stateData[i].date;
-    var death = stateData[i].death;
-    var positive = stateData[i].positive;
-    var test = stateData[i].totalTestResultsIncrease;
-    var hosp = stateData[i].hospitalized;
-    fullDate[i] = Math.abs(date);
-    fullDeath[i] = Math.abs(death);
-    fullCases[i] = Math.abs(positive);
-    fullTests[i] = Math.abs(test);
-    fullHosp[i] = Math.abs(hosp);
-}
+        date = luxon.DateTime.fromISO(date).toFormat('yyyy-LL-dd');
+     if (startDate <= date && endDate >= date) {
+       
+       var death = stateData[count].death;
+       var positive = stateData[count].positive;
+       var test = stateData[count].totalTestResultsIncrease;
+       var hosp = stateData[count].hospitalized;
+       fullDate[count] = date;
+       fullDeath[count] = Math.abs(death);
+       fullCases[count] = Math.abs(positive);
+       fullTests[count] = Math.abs(test);
+       fullHosp[count] = Math.abs(hosp);
+       count++;
+      } 
+    }
+  
 
 return {
     fullDate: fullDate,
