@@ -8,28 +8,28 @@ const charts = {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Deaths",
+    // label: "# of Deaths",
    
   },
   cases: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Cases",
+    // label: "# of Cases",
   
   },
   tests: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Tests",
+    // label: "# of Tests",
     
   },
   hospitalization: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Hospitalizations",
+    // label: "# of Hospitalizations",
     
   },
 };
@@ -221,7 +221,7 @@ Chart.defaults.global.defaultFontColor = 'blue';
       labels: [],
       datasets: [
         {
-          label: "# ",
+          label: "",
           data: [],
           backgroundColor: grd,
           borderColor: [
