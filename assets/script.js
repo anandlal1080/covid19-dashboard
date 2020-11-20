@@ -179,10 +179,10 @@ function displayStateResults(stateData) {
         date = luxon.DateTime.fromISO(date).toFormat('yyyy-LL-dd');
      if (startDate <= date && endDate >= date) {
        
-       var death = stateData[count].death;
-       var positive = stateData[count].positive;
-       var test = stateData[count].totalTestResultsIncrease;
-       var hosp = stateData[count].hospitalized;
+       var death = stateData[i].death;
+       var positive = stateData[i].positive;
+       var test = stateData[i].totalTestResultsIncrease;
+       var hosp = stateData[i].hospitalized;
        fullDate[count] = date;
        fullDeath[count] = Math.abs(death);
        fullCases[count] = Math.abs(positive);
