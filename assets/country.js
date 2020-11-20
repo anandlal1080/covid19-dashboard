@@ -46,6 +46,12 @@ const countryApi = {
   
   let country = "saint-vincent-and-the-grenadines";
 
+  $("#countries").on('change', function (e) {
+    country = e.target.value
+    getCountryResults(country, cStartDate, cEndDate);
+    
+  })
+
   let cStartDate = "2020-03-01";
   $("#country-start").on('change', function (e) {
     cStartDate = e.target.value

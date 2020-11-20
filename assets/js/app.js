@@ -1,6 +1,6 @@
 $(document).foundation();
 
-let states = new Array();
+
 const states_array = [
   "AK",
   "AL",
@@ -64,7 +64,18 @@ $.each(states_array, function(val, text) {
 fetch("https://api.covid19api.com/countries")
   .then((data) => data.json())
   .then(function (countries) {
-    countries.forEach(function ({ Slug, Country }) {
+    countries.sort(function (a, b) {
+        const aName = a.Country.toUpperCase();
+        const bName = b.Country.toUpperCase();
+        if (aName < bName) {
+          return -1;
+        }
+        if (aName > bName) {
+          return 1;
+        }
+        return 0;
+    })
+    .forEach(function ({ Slug, Country }) {
       $("#countries").append($("<option></option>").val(Slug).html(Country));
     });
   });
