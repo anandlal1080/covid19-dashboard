@@ -44,9 +44,21 @@ const countryApi = {
     document.getElementById("ww-hospitalization-chart")
   );
   
-  let cStartDate = "2020-08-01";
-  let cEndDate = "2020-11-06";
-  let country = "canada";
+  let country = "saint-vincent-and-the-grenadines";
+
+  let cStartDate = "2020-03-01";
+  $("#country-start").on('change', function (e) {
+    cStartDate = e.target.value
+  })
+  
+  let cEndDate = "2020-11-20";
+  $("#country-end").on('change', function (e) {
+    cEndDate = e.target.value
+    getCountryResults(country, cStartDate, cEndDate);
+  })
+
+
+
  
   getCountryResults(country, cStartDate, cEndDate);
 
