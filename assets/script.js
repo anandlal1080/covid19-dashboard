@@ -50,9 +50,15 @@ let endDate = "2020-11-06";
 $("#end").on('change', function (e) {
   endDate = e.target.value
 })
-let state = "CO";
 
-getStatesResults(state);
+
+let state = "CO";
+$("#states").on('change', function (e) {
+  state = states_array[e.target.value]
+  getStatesResults(state);
+  
+})
+
 
 function getStatesResults(state) {
   fetch(`${stateApi.base}${state}/daily.json`)
@@ -165,16 +171,18 @@ function displayStateResults(stateData) {
   let fullHosp = [];
 
   for (let i = 0; i < stateData.length; i++) {
+
+    
     var date = stateData[i].date;
     var death = stateData[i].death;
     var positive = stateData[i].positive;
     var test = stateData[i].totalTestResultsIncrease;
     var hosp = stateData[i].hospitalized;
-    fullDate[i] = date;
-    fullDeath[i] = death;
-    fullCases[i] = positive;
-    fullTests[i] = test;
-    fullHosp[i] = hosp;
+    fullDate[i] = Math.abs(date);
+    fullDeath[i] = Math.abs(death);
+    fullCases[i] = Math.abs(positive);
+    fullTests[i] = Math.abs(test);
+    fullHosp[i] = Math.abs(hosp);
 }
 
 return {
