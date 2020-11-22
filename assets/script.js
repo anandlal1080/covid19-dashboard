@@ -67,7 +67,7 @@ function getStatesResults(state) {
     .then((data) => {
       // sanitize our results
       // TODO: refactor function name and change how the results are returned
-      const results = displayStateResults(data.reverse());
+      const results = sanitizeStateResults(data.reverse());
       const chart = charts.deaths.chart;
       charts.deaths.labels = results.fullDate;
       charts.deaths.values = results.fullDeath;
@@ -164,7 +164,7 @@ $("#day-toggle").on("click", "button", function (e) {
   }
 });
 
-function displayStateResults(stateData) {
+function sanitizeStateResults(stateData) {
   let fullDate = [];
   let fullDeath = [];
   let fullCases = [];
