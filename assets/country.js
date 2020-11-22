@@ -43,20 +43,21 @@ const countryApi = {
   charts2.active.chart = buildChart(
     document.getElementById("ww-hospitalization-chart")
   );
-  
-  let country = "saint-vincent-and-the-grenadines";
-
+  // Initialized the Global variable country to a default - United States
+  let country = "united-states";
+// This will set the country variable to waht was selected on the dropdown list and plot the graphs.
   $("#countries").on('change', function (e) {
     country = e.target.value
     getCountryResults(country, cStartDate, cEndDate);
     
   })
-
+// This initialises the country start date and then sets it to what was slected on the calender.
   let cStartDate = "2020-03-01";
   $("#country-start").on('change', function (e) {
     cStartDate = e.target.value
   })
-  
+  // This initialises the country end date and then sets it to what was slected on the calender.
+  // Then plots the graphs.
   let cEndDate = luxon.DateTime.local().toISODate();
   $("#country-end").on('change', function (e) {
     cEndDate = e.target.value
@@ -65,11 +66,11 @@ const countryApi = {
 
 
 
- 
+//  This plots the graphs on initial page load with the default values for country, cstart and cend dates.
   getCountryResults(country, cStartDate, cEndDate);
 
   
-  // Request Covid data based off of our country
+  // Request Covid data based off of our country and plots charts
   function getCountryResults(country, cStartDate, cEndDate) {
     fetch(`${countryApi.base}${country}?from=${cStartDate}T00:00:00Z&to=${cEndDate}T00:00:00Z`)
       .then((countryData) => countryData.json())
@@ -77,8 +78,8 @@ const countryApi = {
         
          
         // sanitize our results
-        // TODO: refactor function name and change how the results are returned
-        const results = displayCountryResults(data);
+        
+        const results = sanitizeCountryResults(data);
         const chart = charts2.deaths.chart;
         charts2.deaths.labels = results.fullDate;
         charts2.deaths.values = results.fullDeath;
@@ -176,7 +177,9 @@ const countryApi = {
     }
   });
   
-  function displayCountryResults(countryData) {
+  // This function takes the data that was returned from the API call and places it into the various variables
+  // that are used to plot the graphs.
+  function sanitizeCountryResults(countryData) {
     let fullDate = [];
     let fullDeath = [];
     let fullConfirm = [];
@@ -212,45 +215,5 @@ const countryApi = {
   
   
   
-  // Build and return a reference to a ChartJS object
-  function buildChart(chartElement) {
-    var ctx = chartElement.getContext("2d");
 
-    // Create gradient
-    var grd = ctx.createLinearGradient(200, 200, 300, 0);
-    grd.addColorStop(0, "green");
-    grd.addColorStop(.5, "yellow");
-    grd.addColorStop(1, "red");
-    return new Chart(chartElement, {
-      type: "line",
-      data: {
-        labels: [],
-        datasets: [
-          {
-            label: "# ",
-            data: [],
-            backgroundColor: grd,
-            borderColor: [
-            ],
-            pointHoverBackgroundColor: 'blue',  
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        legend: {
-          display: false
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-  }
   
