@@ -52,6 +52,71 @@ $("#states").on('change', function (e) {
   
 })
 
+pageLoad();
+function pageLoad() {
+  fetch('https://extreme-ip-lookup.com/json/')
+.then( res => res.json())
+.then(response => {
+  $(document).ready(function() {
+
+    $.ajax({
+    
+    type: "GET",
+    
+    url: "./assets/us_states.csv",
+    
+    dataType: "text",
+    
+    success: function(data) {processData(data);}
+    
+    });
+    
+    });
+    
+    function processData(allText) {
+    
+    var allTextLines = allText.split(/\r\n|\n/);
+    
+    var headers = allTextLines[0].split(',');
+    
+    var lines = [];
+    
+    for (var i=1; i<allTextLines.length; i++) {
+    
+    var data = allTextLines[i].split(',');
+    
+    if (data.length == headers.length) {
+    
+    var tarr = [];
+    
+    for (var j=0; j<headers.length; j++) {
+    
+    tarr.push(headers[j],data[j]);
+    
+    }
+    
+    lines.push(tarr);
+    
+    }
+    
+    }
+  
+    for (let i = 0; i < (lines[0].length)-1; i++) {
+      
+      
+      if (lines[0][i] == response.region) {
+        state = lines[0][i+1]
+      }
+      
+    }
+    startDate = "2020-03-05";
+    endDate = luxon.DateTime.local().toISODate();
+    getStatesResults(state)
+    
+  }
+ })
+  
+}
 
 function getStatesResults(state) {
   fetch(`${stateApi.base}${state}/daily.json`)
@@ -120,14 +185,7 @@ $("#day-toggle").on("click", "button", function (e) {
   const hospCases = charts.hospitalization.chart;
   const hospvalues = charts.hospitalization.values;
   const hospLabels = charts.hospitalization.labels;
-   if (values.length == 0) {
 
-    startDate = "2020-03-05";
-    endDate = "2020-11-19";
-    state = "CO";
-    getStatesResults(state);
-        
-  }
 
   if (amountOfDays === "total") {
     chart.data.labels = labels;
