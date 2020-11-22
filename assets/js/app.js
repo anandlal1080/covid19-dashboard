@@ -1,6 +1,6 @@
 $(document).foundation();
 
-
+// This is the array of states to be used on the dropdown list
 const states_array = [
   "AK",
   "AL",
@@ -56,11 +56,11 @@ const states_array = [
   "WV",
   "WY",
 ];
-
+// This creates the dropdown list using the array above
 $.each(states_array, function(val, text) {
   $('#states').append( $('<option></option>').val(val).html(text) )
   });
-
+// This fetch is to retun the list of countries from the API and thn display it on the dropdown list.
 fetch("https://api.covid19api.com/countries")
   .then((data) => data.json())
   .then(function (countries) {
@@ -80,8 +80,4 @@ fetch("https://api.covid19api.com/countries")
     });
   });
 
-// fetch("https://api.covidtracking.com/v1/states/")
-//   .then((data) => data.json())
-//   .then(function (states) {
-//     console.log(states);
-//   });
+
