@@ -75,7 +75,7 @@ const countryApi = {
       .then((countryData) => countryData.json())
       .then((data) => {
         
-          console.log(data);
+         
         // sanitize our results
         // TODO: refactor function name and change how the results are returned
         const results = displayCountryResults(data);
@@ -127,7 +127,7 @@ const countryApi = {
   // Assign Event listener to the day toggler buttons
   $("#ww-toggle").on("click", "button", function (e) {
     const amountOfDays = $(this).val();
-    console.log(amountOfDays);
+    
     const values = charts2.deaths.values;
     const casesvalues = charts2.cases.values;
     const casesLabels = charts2.cases.labels;
