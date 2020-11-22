@@ -7,30 +7,22 @@ const charts = {
   deaths: {
     labels: [],
     values: [],
-    chart: {},
-    
-   
+    chart: {}, 
   },
   cases: {
     labels: [],
     values: [],
     chart: {},
-    
-  
   },
   tests: {
     labels: [],
     values: [],
-    chart: {},
-    
-    
+    chart: {},  
   },
   hospitalization: {
     labels: [],
     values: [],
     chart: {},
-    
-    
   },
 };
 
@@ -128,6 +120,14 @@ $("#day-toggle").on("click", "button", function (e) {
   const hospCases = charts.hospitalization.chart;
   const hospvalues = charts.hospitalization.values;
   const hospLabels = charts.hospitalization.labels;
+   if (values.length == 0) {
+
+    startDate = "2020-03-05";
+    endDate = "2020-11-19";
+    state = "CO";
+    getStatesResults(state);
+        
+  }
 
   if (amountOfDays === "total") {
     chart.data.labels = labels;
