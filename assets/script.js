@@ -34,6 +34,7 @@ charts.hospitalization.chart = buildChart(
   document.getElementById("hospitalization-chart")
 );
 
+pageLoad();
 // Initialized the startDate variable nad then sets it from the calendar
 let startDate = "";
 $("#start").on('change', function (e) {
@@ -55,7 +56,6 @@ $("#states").on('change', function (e) {
   
 })
 
-pageLoad();
 // This function activates on page load. It will get the user's location using their IP address.
 // It will them compare that to a txt file to get the state abbreviation.
 // Then it will call the getStatesResults() function to display graphs for the user's State
@@ -246,7 +246,7 @@ function sanitizeStateResults(stateData) {
     
     var date = stateData[i].date;
         date = luxon.DateTime.fromISO(date).toFormat('yyyy-LL-dd');
-          
+        if (startDate <= date && endDate >= date) { 
        var death = stateData[i].death;
        var positive = stateData[i].positive;
        var test = stateData[i].totalTestResultsIncrease;
@@ -257,7 +257,7 @@ function sanitizeStateResults(stateData) {
        fullTests[count] = Math.abs(test);
        fullHosp[count] = Math.abs(hosp);
        count++;
-
+        }
     }
   
 
