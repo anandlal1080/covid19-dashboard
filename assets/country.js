@@ -57,7 +57,7 @@ const countryApi = {
     cStartDate = e.target.value
   })
   
-  let cEndDate = "2020-11-20";
+  let cEndDate = luxon.DateTime.local().toISODate();
   $("#country-end").on('change', function (e) {
     cEndDate = e.target.value
     getCountryResults(country, cStartDate, cEndDate);
