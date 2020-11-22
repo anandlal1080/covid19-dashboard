@@ -8,28 +8,28 @@ const charts = {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Deaths",
+    
    
   },
   cases: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Cases",
+    
   
   },
   tests: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Tests",
+    
     
   },
   hospitalization: {
     labels: [],
     values: [],
     chart: {},
-    label: "# of Hospitalizations",
+    
     
   },
 };
@@ -74,7 +74,7 @@ function getStatesResults(state) {
       
       chart.data.labels = charts.deaths.labels;
       chart.data.datasets[0].data = charts.deaths.values;
-      chart.data.datasets[0].label = charts.deaths.label;
+      
       
       
       const chartCases = charts.cases.chart;
@@ -83,7 +83,7 @@ function getStatesResults(state) {
       
       chartCases.data.labels = charts.cases.labels;
       chartCases.data.datasets[0].data = charts.cases.values;
-      chartCases.data.datasets[0].label = charts.cases.label;
+      
      
 
       const testCases = charts.tests.chart;
@@ -92,7 +92,7 @@ function getStatesResults(state) {
       
       testCases.data.labels = charts.tests.labels;
       testCases.data.datasets[0].data = charts.tests.values;
-      testCases.data.datasets[0].label = charts.tests.label;
+      
      
 
       const hospCases = charts.hospitalization.chart;
@@ -101,7 +101,7 @@ function getStatesResults(state) {
       
       hospCases.data.labels = charts.hospitalization.labels;
       hospCases.data.datasets[0].data = charts.hospitalization.values;
-      hospCases.data.datasets[0].label = charts.hospitalization.label;
+      
      
 
       chart.update();

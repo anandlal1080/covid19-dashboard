@@ -10,28 +10,28 @@ const countryApi = {
       labels: [],
       values: [],
       chart: {},
-      label: "# of Deaths",
+      
       
     },
     cases: {
       labels: [],
       values: [],
       chart: {},
-      label: "Total # of Cases",
+      
       
     },
     recovered: {
       labels: [],
       values: [],
       chart: {},
-      label: "# of Recovered",
+    
      
     },
     active: {
       labels: [],
       values: [],
       chart: {},
-      label: "# of Active Cases",
+     
      
     },
   };
@@ -85,7 +85,7 @@ const countryApi = {
         
         chart.data.labels = charts2.deaths.labels;
         chart.data.datasets[0].data = charts2.deaths.values;
-        chart.data.datasets[0].label = charts2.deaths.label;
+        
        
         
         const chartCases = charts2.cases.chart;
@@ -94,7 +94,7 @@ const countryApi = {
         
         chartCases.data.labels = charts2.cases.labels;
         chartCases.data.datasets[0].data = charts2.cases.values;
-        chartCases.data.datasets[0].label = charts2.cases.label;
+        
         
   
         const testCases = charts2.recovered.chart;
@@ -103,7 +103,7 @@ const countryApi = {
         
         testCases.data.labels = charts2.recovered.labels;
         testCases.data.datasets[0].data = charts2.recovered.values;
-        testCases.data.datasets[0].label = charts2.recovered.label;
+        
       
   
         const hospCases = charts2.active.chart;
@@ -112,7 +112,7 @@ const countryApi = {
         
         hospCases.data.labels = charts2.active.labels;
         hospCases.data.datasets[0].data = charts2.active.values;
-        hospCases.data.datasets[0].label = charts2.active.label;
+       
        
   
         chart.update();
