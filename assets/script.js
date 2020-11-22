@@ -33,18 +33,21 @@ charts.tests.chart = buildChart(document.getElementById("tests-chart"));
 charts.hospitalization.chart = buildChart(
   document.getElementById("hospitalization-chart")
 );
+
+// Initialized the startDate variable nad then sets it from the calendar
 let startDate = "";
 $("#start").on('change', function (e) {
   startDate = e.target.value
 })
 
+// Initialized the endDate variable nad then sets it from the calendar
 let endDate = "";
 $("#end").on('change', function (e) {
   endDate = e.target.value
   getStatesResults(state);
 })
 
-
+// Initialized the state variable nad then sets it from the state dropdown
 let state = "";
 $("#states").on('change', function (e) {
   state = states_array[e.target.value]
@@ -53,6 +56,9 @@ $("#states").on('change', function (e) {
 })
 
 pageLoad();
+// This function activates on page load. It will get the user's location using their IP address.
+// It will them compare that to a txt file to get the state abbreviation.
+// Then it will call the getStatesResults() function to display graphs for the user's State
 function pageLoad() {
   fetch('https://extreme-ip-lookup.com/json/')
 .then( res => res.json())
@@ -118,6 +124,8 @@ function pageLoad() {
   
 }
 
+// This function does the API call for a specific state. It will retun the values to be sanitized
+// and then used to display charts.
 function getStatesResults(state) {
   fetch(`${stateApi.base}${state}/daily.json`)
     .then((stateData) => stateData.json())
@@ -222,6 +230,9 @@ $("#day-toggle").on("click", "button", function (e) {
   }
 });
 
+
+// This function takes the data that was returned from the API call and places it into the various variables
+// that are used to plot the graphs.
 function sanitizeStateResults(stateData) {
   let fullDate = [];
   let fullDeath = [];
@@ -235,8 +246,7 @@ function sanitizeStateResults(stateData) {
     
     var date = stateData[i].date;
         date = luxon.DateTime.fromISO(date).toFormat('yyyy-LL-dd');
-     if (startDate <= date && endDate >= date) {
-       
+          
        var death = stateData[i].death;
        var positive = stateData[i].positive;
        var test = stateData[i].totalTestResultsIncrease;
@@ -247,7 +257,7 @@ function sanitizeStateResults(stateData) {
        fullTests[count] = Math.abs(test);
        fullHosp[count] = Math.abs(hosp);
        count++;
-      } 
+
     }
   
 
